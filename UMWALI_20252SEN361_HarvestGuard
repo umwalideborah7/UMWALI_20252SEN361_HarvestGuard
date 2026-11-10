@@ -1,0 +1,114 @@
+# HarvestGuard: A Post-Harvest Loss Tracker for Rwandan Farms
+
+Tracking where food is lost between the farm and the market.
+
+Student:UMWALI Deborah |Student ID:20252SEN361
+Course:INSY 8311 – Database Development with PL/SQL
+Instructor:Eric Maniraguha
+Academic year:2026–2027 (Semester I)
+
+
+## Problem Statement
+
+In Rwanda, a large share of the food that farmers grow is lost between harvest and sale. The African Postharvest Losses Information System (APHLIS) estimates that Rwanda loses about 16.3% of its maize production each year, which was roughly 73,000 tonnes in 2020. The same source estimates that the maize lost in 2020 could have met the annual energy needs of about 311,844 people.
+
+Losses happen at several stages of the value chain: harvesting and field drying, threshing and shelling, transport, processing, packaging, storage and sales. Today these losses are mostly measured through national surveys and estimates, and there is no simple database that lets a manager record a batch of crop, follow it through each stage, and see exactly where the loss occurs. Without that, farmers, cooperative leaders and agricultural officers cannot tell which stage or which district needs help.
+
+## Proposed Solution
+
+HarvestGuard is an Oracle database with PL/SQL that records harvest batches and the quantity lost at each stage of the value chain, enforces business rules (for example, a loss can never exceed the quantity in the batch), and shows which stage, crop and district lose the most food.
+
+Scope:The project focuses on stage-by-stage loss analysis using real national survey data.
+
+## Objectives
+
+Main objective:Design and build an Oracle PL/SQL database that tracks post-harvest losses by crop, district and value chain stage, so that high-loss points can be identified and acted on.
+
+Specific objectives:
+1. Collect and normalize real post-harvest loss data from the NISR Season Agriculture Survey into 3NF tables.
+2. Enforce loss-recording rules with PL/SQL triggers, procedures and functions (for example, rejecting a loss larger than the harvested quantity).
+3. Automatically flag batches whose loss percentage is above a set threshold, using a cursor-based procedure.
+4. Keep an audit log of every change to loss records to protect data integrity.
+5. Present loss trends by district, crop and stage through a live dashboard connected to the Oracle database.
+
+## Data Source
+
+- Dataset: Rwanda Season Agriculture Survey 2022 (Reference ID: RWA-NISR-SAS-2022-v0.1), National Institute of Statistics of Rwanda (NISR).
+- Link: https://microdata.statistics.gov.rw/index.php/catalog/103
+- Content: Survey variables on quantity lost during transportation, processing, packaging and sales, by season (A, B and C) and crop.
+- Size: Tens of thousands of survey responses per variable (one loss variable lists 37,208 valid cases). [Confirm the exact number of records after download.]
+- Licence and privacy: [Add NISR's terms of use here after reading them. Remove any household or personal identifiers before loading the data.]
+- Supporting statistics: APHLIS loss estimates by crop and value chain step – https://www.aphlis.net
+
+## Innovation
+
+Option: Analytics dashboard
+Tool: Power BI, connected live to the Oracle database [or Oracle APEX, if Power BI cannot connect to your Oracle setup – decide before submitting].
+What it shows: Loss percentage by district, crop and value chain stage, with filters by season, and a list of batches flagged as high-loss.
+Business rules stay in PL/SQL; the dashboard only displays the data.
+
+## Planned Tables (to be normalized to 3NF in Phase II)
+
+| Table | Purpose |
+|---|---|
+| `districts` | Districts and provinces |
+| `crops` | Crop types (maize, beans, potatoes, etc.) |
+| `seasons` | Agricultural seasons (A, B, C) and year |
+| `farm_holdings` | Anonymized farm holdings, linked to a district |
+| `harvest_batches` | A harvested quantity of one crop in one season |
+| `loss_stages` | Value chain stages (harvest, transport, processing, packaging, storage, sales) |
+| `loss_records` | Quantity lost at a stage for a batch, with cause |
+| `storage_facilities` | Where batches are stored |
+| `audit_log` | Records changes to loss data |
+
+## Planned PL/SQL Features
+
+- Trigger: blocks any loss record that would make the total lost quantity larger than the harvest batch quantity.
+- Procedure `record_loss`: validates the stage and quantity, then saves a loss record.
+- Function `loss_pct(batch_id)`: returns the percentage of a batch that has been lost.
+- Cursor: loops through batches whose loss percentage is above the threshold (for example 15%) and flags them for review.
+- Package `post_harvest_pkg`: groups the procedures and functions above in one place.
+- Exception handling: returns clear errors for invalid batches, stages or quantities.
+- Audit trigger: writes every insert, update and delete on loss records to `audit_log`.
+
+## Expected Results
+
+A working database where a user can record a batch and its losses, see which stage loses the most food, and receive a flag on high-loss batches, demonstrated live through the dashboard.
+
+## Repository Structure
+
+
+docs/research/       research log
+docs/proposal/       proposal (max 2 pages)
+docs/presentation/   presentation slides
+data/                dataset files and notes
+
+
+## References (APA)
+
+African Postharvest Losses Information System. (n.d.). Rwanda – Maize postharvest losses [Data set]. https://www.aphlis.net/en/data/tables/overview/RW/maize/all-years
+
+National Institute of Statistics of Rwanda. (2023). Rwanda Season Agriculture Survey 2022 (RWA-NISR-SAS-2022-v0.1) [Data set]. https://microdata.statistics.gov.rw/index.php/catalog/103
+African Postharvest Losses Information System. (n.d.). *APHLIS: Postharvest loss estimates for Rwanda* [Data set]. https://www.aphlis.net
+
+Benimana, G. U., Ritho, C., & Irungu, P. (2021). Assessment of factors affecting the decision of smallholder farmers to use alternative maize storage technologies in Gatsibo District-Rwanda. *[Journal name]*, *[volume]*([issue]), [pages]. https://doi.org/[DOI]
+
+Benimana, G., Ritho, C., & Irungu, P. (2023). Impact of adopting maize hermetic storage technologies on smallholder farmers' income in Gatsibo District, Rwanda. *[Journal name]*, *[volume]*([issue]), [pages]. https://doi.org/[DOI]
+
+Food and Agriculture Organization of the United Nations. (2019). *The state of food and agriculture 2019: Moving forward on food loss and waste reduction*. FAO. http://www.fao.org/3/ca6030en/ca6030en.pdf
+
+National Institute of Statistics of Rwanda. ([Year]). *Rwanda Season Agriculture Survey 2022* (RWA-NISR-SAS-2022-v0.1) [Data set]. https://microdata.statistics.gov.rw/index.php/catalog/103
+
+Oracle. (n.d.). PL/SQL triggers. In *Oracle Database PL/SQL language reference* (19c). https://docs.oracle.com/en/database/oracle/oracle-database/19/lnpls/plsql-triggers.html
+
+Reasearch Paper 1 (2021): studied 301 smallholder maize farmers in Gatsibo District on what influences their choice of storage technology, because storage losses come from a lack of proper facilities. Gap: it explains storage choices, not where losses occur step by step. 
+una
+Reasearch Paper 2 (2023): found that adopting hermetic storage had a positive and significant impact on income from stored maize. Gap: it measures income impact, with no system to track losses. 
+una
+Report (FAO 2019): gives the share of food lost from post-harvest through to, but not including, retail, by food group and region. Gap: regional percentages, not district or batch level. 
+ourworldindata
+Existing system (APHLIS): gives loss estimates by country and crop. Gap: estimates, not batch-by-batch tracking you can query and audit.
+Dataset (NISR): your main data.
+Technical (Oracle Docs): explains that triggers fire automatically when a triggering event occurs, which supports your overspending-style rule on loss records. 
+oracle
+
