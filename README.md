@@ -128,4 +128,4 @@ Phase I BUSINESS PROCESS MODELLING
  Currently, post-harvest losses are often estimated through surveys rather than being recorded and monitored continuously. This makes it difficult to determine precisely where the greatest losses occur and which stages require immediate attention. Without accurate records, farmers and managers may struggle to identify problems and implement effective solutions. This business process is important because reducing post-harvest losses can help increase farmers' income, minimize food waste, and improve food security. Furthermore, having reliable information about losses at each stage supports evidence-based decision-making and helps managers identify opportunities to improve the overall efficiency of the agricultural supply chain.
 
 
-
+https://github.com/umwalideborah7/UMWALI_20252SEN361_HarvestGuard/commit/e7440a1fb88b5159dc15ababc987441fddeeecd5
