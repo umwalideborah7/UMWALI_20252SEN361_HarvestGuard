@@ -111,4 +111,22 @@ ourworldindata
 Existing system (APHLIS): gives loss estimates by country and crop. Gap: estimates, not batch-by-batch tracking you can query and audit.
 Dataset (NISR): your main data.
 Technical (Oracle Docs): explains that triggers fire automatically when a triggering event occurs, which supports your overspending-style rule on loss records. 
-oracle
+
+
+
+Phase I BUSINESS PROCESS MODELLING
+
+
+  THE BUSINESS PROCESS OF HarvestGuard
+ 
+ Recording and Monitoring Post-Harvest Losses of a Harvest Batch The business process focuses on recording, tracking, and monitoring the quantity of crops lost at different stages of post-harvest handling. These stages include transportation, storage, processing, packaging, and sales. The process ensures that every harvested batch is properly documented and that any losses occurring along the supply chain are identified and evaluated.
+ 
+ The main purpose of this process is to establish an accurate and reliable system for monitoring post-harvest losses. It aims to ensure that all losses are recorded correctly, invalid or unrealistic entries are rejected, and batches experiencing unusually high losses are flagged for further investigation. This information provides managers with reliable evidence to understand the causes of losses and make appropriate decisions.
+ 
+ The expected outcome is a complete and trustworthy loss record for every harvested batch, showing the quantity lost at each stage. Batches with unusually high losses should be identified and reviewed, while any corrective actions taken should be documented for future reference. This will improve accountability and make it easier to monitor the performance of different stages in the post-harvest process.
+ 
+ Currently, post-harvest losses are often estimated through surveys rather than being recorded and monitored continuously. This makes it difficult to determine precisely where the greatest losses occur and which stages require immediate attention. Without accurate records, farmers and managers may struggle to identify problems and implement effective solutions. This business process is important because reducing post-harvest losses can help increase farmers' income, minimize food waste, and improve food security. Furthermore, having reliable information about losses at each stage supports evidence-based decision-making and helps managers identify opportunities to improve the overall efficiency of the agricultural supply chain.
+
+
+
+ file:///C:/Users/Q.C/OneDrive/Desktop/The%20support%20explanation%20document.pdf
