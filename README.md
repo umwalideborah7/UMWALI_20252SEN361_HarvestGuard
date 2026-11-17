@@ -139,5 +139,17 @@ Phase I BUSINESS PROCESS MODELLING
  7.  Manager / Administrator: Reviews loss reports, investigates high-loss batches, and records corrective actions.
 In summary these actors work together to ensure that post-harvest losses are accurately recorded, monitored, and managed at every stage.
 
+ Data-generating activities 
+ Activity                       Type	                        Data involved    
+ Save batch                     Create                        harvest_batches: crop, season, quantity, farm 
+ Save loss + log	              Create                        loss_records and audit_log 
+ Calculate %	                  Retrieve	                    batch quantity and its loss records 
+ Flag batch                   	Update	                      batch status set to “flagged”
+ Review batch	                  Retrieve	                    batch, its losses and flags 
+ Record action	                Update	                      batch status and the manager’s note
+ Archive batches	              Archive	                      closed-season batches marked as archived
+ 
+ No records are deleted. Batches are archived instead, so the history stays available for audits. That is my design choice, so change it if you prefer a different approach.
+
 
 https://github.com/umwalideborah7/UMWALI_20252SEN361_HarvestGuard/commit/e7440a1fb88b5159dc15ababc987441fddeeecd5
