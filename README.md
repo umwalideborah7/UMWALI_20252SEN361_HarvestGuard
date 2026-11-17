@@ -128,4 +128,16 @@ Phase I BUSINESS PROCESS MODELLING
  Currently, post-harvest losses are often estimated through surveys rather than being recorded and monitored continuously. This makes it difficult to determine precisely where the greatest losses occur and which stages require immediate attention. Without accurate records, farmers and managers may struggle to identify problems and implement effective solutions. This business process is important because reducing post-harvest losses can help increase farmers' income, minimize food waste, and improve food security. Furthermore, having reliable information about losses at each stage supports evidence-based decision-making and helps managers identify opportunities to improve the overall efficiency of the agricultural supply chain.
 
 
+ ACTORS AND RESPONSIBILITIES
+ HarvestGuard involves the following actors, each with specific responsibilities in recording and monitoring post-harvest losses.
+ 1. Farmer / Harvest Recorder: Registers harvested batches and provides initial crop information, including crop type and quantity.
+ 2.  Transport Officer: Records crop quantities transported, losses during transportation, and quantities received.
+ 3. Storekeeper: Monitors stored crops and records losses caused by spoilage or damage.
+ 4. Processing Officer: Records quantities processed and losses occurring during processing.
+ 5. Packaging Officer: Records packaged quantities and losses caused by damaged or rejected products.
+ 6. Sales Officer: Records quantities sold, rejected products, and remaining stock.
+ 7.  Manager / Administrator: Reviews loss reports, investigates high-loss batches, and records corrective actions.
+In summary these actors work together to ensure that post-harvest losses are accurately recorded, monitored, and managed at every stage.
+
+
 https://github.com/umwalideborah7/UMWALI_20252SEN361_HarvestGuard/commit/e7440a1fb88b5159dc15ababc987441fddeeecd5
